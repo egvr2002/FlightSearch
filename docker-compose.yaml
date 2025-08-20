@@ -1,0 +1,15 @@
+services:
+  flight-search-be:
+    build: ./backend
+    restart: always
+    ports:
+      - "8080:8080"
+  
+  flight-search-fe:
+    build: ./frontend
+    restart: always
+    depends_on:
+      - flight-search-be
+    ports:
+      - "4173:4173"
+    
