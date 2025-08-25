@@ -1,15 +1,21 @@
 services:
   flight-search-be:
+    container_name: flight-search-be-app
     build: ./backend
-    restart: always
+    restart: on-failure:5
+    env_file:
+      - ./backend/.env
     ports:
       - "8080:8080"
+
   
   flight-search-fe:
+    container_name: flight-search-fe-app
     build: ./frontend
-    restart: always
+    restart: on-failure:5
     depends_on:
       - flight-search-be
     ports:
       - "4173:4173"
+
     
