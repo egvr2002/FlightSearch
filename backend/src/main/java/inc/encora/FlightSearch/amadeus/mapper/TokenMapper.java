@@ -1,6 +1,6 @@
 package inc.encora.FlightSearch.amadeus.mapper;
 
-import inc.encora.FlightSearch.amadeus.dto.response.TokenResponseDTO;
+import inc.encora.FlightSearch.amadeus.dto.response.AmadeusTokenResponseDTO;
 import inc.encora.FlightSearch.amadeus.model.Token;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,7 +13,7 @@ import java.time.temporal.ChronoUnit;
 public interface TokenMapper {
     @Mapping(target = "value", source = "accessToken")
     @Mapping(target = "expiresAt", source = "expiresIn", qualifiedByName = "toInstant")
-    Token toToken(TokenResponseDTO tokenResponseDTO);
+    Token toToken(AmadeusTokenResponseDTO amadeusTokenResponseDTO);
 }
 
 class TokenExpirationMapper {

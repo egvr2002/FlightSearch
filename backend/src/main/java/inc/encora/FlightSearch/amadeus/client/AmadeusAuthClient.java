@@ -1,8 +1,8 @@
 package inc.encora.FlightSearch.amadeus.client;
 
-import inc.encora.FlightSearch.amadeus.constants.AmadeusWebClientType;
-import inc.encora.FlightSearch.amadeus.dto.request.TokenRequestDTO;
-import inc.encora.FlightSearch.amadeus.dto.response.TokenResponseDTO;
+import inc.encora.FlightSearch.amadeus.constants.common.AmadeusWebClientType;
+import inc.encora.FlightSearch.amadeus.dto.request.AmadeusTokenRequestDTO;
+import inc.encora.FlightSearch.amadeus.dto.response.AmadeusTokenResponseDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -19,7 +19,7 @@ public class AmadeusAuthClient {
         this.webClient = webClient;
     }
 
-    public Mono<TokenResponseDTO> requestAccessToken(TokenRequestDTO credentials) {
+    public Mono<AmadeusTokenResponseDTO> requestAccessToken(AmadeusTokenRequestDTO credentials) {
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
 
         body.add("grant_type", credentials.getGrantType());
@@ -32,6 +32,6 @@ public class AmadeusAuthClient {
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .body(BodyInserters.fromFormData(body))
                 .retrieve()
-                .bodyToMono(TokenResponseDTO.class);
+                .bodyToMono(AmadeusTokenResponseDTO.class);
     }
 }

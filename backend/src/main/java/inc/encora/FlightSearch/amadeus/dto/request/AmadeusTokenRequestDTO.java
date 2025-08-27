@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TokenRequestDTO {
+public class AmadeusTokenRequestDTO {
     @JsonProperty("grant_type")
     private String grantType;
 
