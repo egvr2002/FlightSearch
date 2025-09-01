@@ -1,7 +1,9 @@
 package inc.encora.FlightSearch.amadeus.client;
 
 import inc.encora.FlightSearch.amadeus.constants.common.AmadeusWebClientType;
+import inc.encora.FlightSearch.amadeus.dto.common.AmadeusAirlineInformationDTO;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
+import inc.encora.FlightSearch.amadeus.dto.request.AmadeusAirlinesLookupRequestDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.AmadeusSearchLocationsRequestDTO;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +32,18 @@ public class AmadeusLocationsClient {
                         .build()
                 )
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {});
+                .bodyToMono(new ParameterizedTypeReference<>() {
+                });
+    }
+
+    public Mono<AmadeusListResponseDTO<AmadeusAirlineInformationDTO>> searchAirlineInformation(AmadeusAirlinesLookupRequestDTO requestDTO) {
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder.path("/v1/reference-data/airlines")
+                        .queryParam("airlineCodes", requestDTO.getAirlineCodes())
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<>() {
+                });
     }
 }

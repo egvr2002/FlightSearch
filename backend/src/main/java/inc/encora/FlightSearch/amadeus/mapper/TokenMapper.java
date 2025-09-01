@@ -9,16 +9,14 @@ import org.mapstruct.Named;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-@Mapper(componentModel = "spring", uses = {TokenExpirationMapper.class})
+@Mapper(componentModel = "spring")
 public interface TokenMapper {
     @Mapping(target = "value", source = "accessToken")
     @Mapping(target = "expiresAt", source = "expiresIn", qualifiedByName = "toInstant")
     Token toToken(AmadeusTokenResponseDTO amadeusTokenResponseDTO);
-}
 
-class TokenExpirationMapper {
     @Named("toInstant")
-    public static Instant toInstant(Long value) {
+    static Instant toInstant(Long value) {
         if (value == null) {
             return null;
         }

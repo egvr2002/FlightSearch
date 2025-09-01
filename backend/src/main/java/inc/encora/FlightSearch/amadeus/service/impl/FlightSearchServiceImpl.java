@@ -2,11 +2,14 @@ package inc.encora.FlightSearch.amadeus.service.impl;
 
 import inc.encora.FlightSearch.amadeus.client.AmadeusLocationsClient;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
+import inc.encora.FlightSearch.amadeus.dto.request.AmadeusAirlinesLookupRequestDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.AmadeusSearchLocationsRequestDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.SearchLocationsDTO;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
+import inc.encora.FlightSearch.amadeus.mapper.AirlineMapper;
 import inc.encora.FlightSearch.amadeus.mapper.LocationMapper;
 import inc.encora.FlightSearch.amadeus.model.Address;
+import inc.encora.FlightSearch.amadeus.model.AirlineInformation;
 import inc.encora.FlightSearch.amadeus.model.Location;
 import inc.encora.FlightSearch.amadeus.service.FlightSearchService;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +25,12 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 
     private final LocationMapper locationMapper;
 
+    private final AirlineMapper airlineMapper;
+
     @Override
     public List<Location> searchLocations(SearchLocationsDTO searchLocationsDTO) {
-        AmadeusSearchLocationsRequestDTO requestDTO = locationMapper.toAmadeusSearchLocationsRequest(searchLocationsDTO);
+        AmadeusSearchLocationsRequestDTO requestDTO = locationMapper
+                .toAmadeusSearchLocationsRequest(searchLocationsDTO);
         return amadeusLocationsClient.searchLocations(requestDTO)
                 .map(AmadeusListResponseDTO::getData)
                 .flatMapMany(Flux::fromIterable)
@@ -45,6 +51,16 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .map(List::getFirst)
                 .map(AmadeusLocationDTO::getAddress)
                 .map(locationMapper::toAddress)
+                .block();
+    }
+
+    @Override
+    public AirlineInformation searchAirlineInformation(String airlineCode) {
+        AmadeusAirlinesLookupRequestDTO requestDTO = new AmadeusAirlinesLookupRequestDTO(airlineCode);
+        return amadeusLocationsClient.searchAirlineInformation(requestDTO)
+                .map(AmadeusListResponseDTO::getData)
+                .map(List::getFirst)
+                .map(airlineMapper::toAirlineInformation)
                 .block();
     }
 }
