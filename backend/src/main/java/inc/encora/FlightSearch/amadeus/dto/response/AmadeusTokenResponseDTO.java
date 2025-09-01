@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class TokenResponseDTO {
+public class AmadeusTokenResponseDTO {
     private String type;
 
     private String username;

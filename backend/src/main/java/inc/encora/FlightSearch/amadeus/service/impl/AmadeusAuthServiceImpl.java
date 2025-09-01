@@ -1,13 +1,11 @@
 package inc.encora.FlightSearch.amadeus.service.impl;
 
 import inc.encora.FlightSearch.amadeus.client.AmadeusAuthClient;
-import inc.encora.FlightSearch.amadeus.constants.AmadeusWebClientType;
-import inc.encora.FlightSearch.amadeus.dto.request.TokenRequestDTO;
+import inc.encora.FlightSearch.amadeus.dto.request.AmadeusTokenRequestDTO;
 import inc.encora.FlightSearch.amadeus.mapper.TokenMapper;
 import inc.encora.FlightSearch.amadeus.model.Token;
 import inc.encora.FlightSearch.amadeus.service.AmadeusAuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +27,7 @@ public class AmadeusAuthServiceImpl implements AmadeusAuthService {
     private String apiSecret;
 
     private Token fetchAcessToken() {
-        TokenRequestDTO credentials = new TokenRequestDTO("client_credentials", apiKey, apiSecret);
+        AmadeusTokenRequestDTO credentials = new AmadeusTokenRequestDTO("client_credentials", apiKey, apiSecret);
         return amadeusAuthClient.requestAccessToken(credentials)
                 .map(tokenMapper::toToken)
                 .block();

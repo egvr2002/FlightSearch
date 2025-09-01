@@ -1,6 +1,6 @@
 package inc.encora.FlightSearch.amadeus.config;
 
-import inc.encora.FlightSearch.amadeus.constants.AmadeusWebClientType;
+import inc.encora.FlightSearch.amadeus.constants.common.AmadeusWebClientType;
 import inc.encora.FlightSearch.amadeus.filters.AddAuthHeaderExchangeFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
