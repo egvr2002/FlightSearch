@@ -47,7 +47,6 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .build();
         return amadeusLocationsClient.searchLocations(requestDTO)
                 .map(AmadeusListResponseDTO::getData)
-                .doOnNext(System.out::println)
                 .map(List::getFirst)
                 .map(AmadeusLocationDTO::getAddress)
                 .map(locationMapper::toAddress)
