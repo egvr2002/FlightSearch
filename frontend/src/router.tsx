@@ -1,10 +1,12 @@
 import {createBrowserRouter, Navigate} from "react-router";
 
-import {MainLayout} from "./flights/layouts/MainLayout";
+import {MainLayout} from "./flight-search/layouts/MainLayout";
 
-import {FlightDetailsPage} from "./flights/pages/FlightDetailsPage";
-import {FlightsResultsPage} from "./flights/pages/FlightsResultsPage";
-import {FlightsSearchPage} from "./flights/pages/FlightsSearchPage";
+import {FlightDetailsPage} from "./flight-search/pages/FlightDetailsPage";
+import {FlightResultsPage} from "./flight-search/pages/FlightsResultsPage";
+import {FlightSearchPage} from "./flight-search/pages/FlightSearchPage";
+
+import {searchFlightsAction} from "./flight-search/actions/search-flights.action";
 
 export const router = createBrowserRouter([
   {
@@ -13,14 +15,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: FlightsSearchPage,
+        Component: FlightSearchPage,
+        action: searchFlightsAction,
       },
       {
-        path: "/flights",
+        path: "/flight-offers",
         children: [
           {
             index: true,
-            Component: FlightsResultsPage,
+            Component: FlightResultsPage,
           },
           {
             path: "details",
