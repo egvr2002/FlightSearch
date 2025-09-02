@@ -1,7 +1,8 @@
-import {type ActionFunctionArgs} from "react-router";
+import {redirect, type ActionFunctionArgs} from "react-router";
 import * as z from "zod";
 
 import {searchFlightsFormSchema} from "../schemas/search-flights-form.schema";
+import {generateSearchParamsFromObject} from "@/lib/utils";
 
 export async function searchFlightsAction({request}: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -16,9 +17,6 @@ export async function searchFlightsAction({request}: ActionFunctionArgs) {
     };
   }
 
-  // TODO: Handle flights search making a HTTP call to the backend.
-  return {
-    ok: true,
-    data,
-  };
+  const searchParams = generateSearchParamsFromObject(data);
+  return redirect(`/flight-offers?${searchParams}`);
 }
