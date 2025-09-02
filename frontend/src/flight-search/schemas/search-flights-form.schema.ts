@@ -40,6 +40,7 @@ export const searchFlightsFormSchema = z
       .literal("on")
       .transform((v) => v === "on")
       .default(false),
+    max: z.number().optional().default(10),
   })
   .refine(
     (data) => {
