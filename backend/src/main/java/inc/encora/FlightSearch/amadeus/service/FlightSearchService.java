@@ -1,8 +1,10 @@
 package inc.encora.FlightSearch.amadeus.service;
 
+import inc.encora.FlightSearch.amadeus.dto.request.SearchFlightsDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.SearchLocationsDTO;
 import inc.encora.FlightSearch.amadeus.model.Address;
 import inc.encora.FlightSearch.amadeus.model.AirlineInformation;
+import inc.encora.FlightSearch.amadeus.model.FlightOffer;
 import inc.encora.FlightSearch.amadeus.model.Location;
 
 import java.util.List;
@@ -13,4 +15,6 @@ public interface FlightSearchService {
     Address searchCityByIATACode(String iataCode);
 
     AirlineInformation searchAirlineInformation(String airlineCode);
+
+    List<FlightOffer> searchFlightOffers(SearchFlightsDTO searchFlightsDTO);
 }
