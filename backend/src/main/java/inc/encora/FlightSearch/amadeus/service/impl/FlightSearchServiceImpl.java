@@ -1,15 +1,16 @@
 package inc.encora.FlightSearch.amadeus.service.impl;
 
+import inc.encora.FlightSearch.amadeus.client.AmadeusFlightOffersClient;
 import inc.encora.FlightSearch.amadeus.client.AmadeusLocationsClient;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
-import inc.encora.FlightSearch.amadeus.dto.request.AmadeusAirlinesLookupRequestDTO;
-import inc.encora.FlightSearch.amadeus.dto.request.AmadeusSearchLocationsRequestDTO;
-import inc.encora.FlightSearch.amadeus.dto.request.SearchLocationsDTO;
+import inc.encora.FlightSearch.amadeus.dto.request.*;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
 import inc.encora.FlightSearch.amadeus.mapper.AirlineMapper;
+import inc.encora.FlightSearch.amadeus.mapper.FlightOfferMapper;
 import inc.encora.FlightSearch.amadeus.mapper.LocationMapper;
 import inc.encora.FlightSearch.amadeus.model.Address;
 import inc.encora.FlightSearch.amadeus.model.AirlineInformation;
+import inc.encora.FlightSearch.amadeus.model.FlightOffer;
 import inc.encora.FlightSearch.amadeus.model.Location;
 import inc.encora.FlightSearch.amadeus.service.FlightSearchService;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +24,13 @@ import java.util.List;
 public class FlightSearchServiceImpl implements FlightSearchService {
     private final AmadeusLocationsClient amadeusLocationsClient;
 
+    private final AmadeusFlightOffersClient amadeusFlightOffersClient;
+
     private final LocationMapper locationMapper;
 
     private final AirlineMapper airlineMapper;
+
+    private final FlightOfferMapper flightOfferMapper;
 
     @Override
     public List<Location> searchLocations(SearchLocationsDTO searchLocationsDTO) {
@@ -60,6 +65,18 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .map(AmadeusListResponseDTO::getData)
                 .map(List::getFirst)
                 .map(airlineMapper::toAirlineInformation)
+                .block();
+    }
+
+    @Override
+    public List<FlightOffer> searchFlightOffers(SearchFlightsDTO searchFlightsDTO) {
+        AmadeusSearchFlightsRequestDTO requestDTO = flightOfferMapper
+                .toAmadeusSearchFlightsRequestDTO(searchFlightsDTO);
+        return amadeusFlightOffersClient.searchFlightOffers(requestDTO)
+                .map(AmadeusListResponseDTO::getData)
+                .flatMapMany(Flux::fromIterable)
+                .map(flightOfferMapper::toFlightOffer)
+                .collectList()
                 .block();
     }
 }
