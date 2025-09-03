@@ -2,6 +2,7 @@ package inc.encora.FlightSearch.amadeus.service.impl;
 
 import inc.encora.FlightSearch.amadeus.client.AmadeusFlightOffersClient;
 import inc.encora.FlightSearch.amadeus.client.AmadeusLocationsClient;
+import inc.encora.FlightSearch.amadeus.config.CacheConfiguration;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.*;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
@@ -14,6 +15,7 @@ import inc.encora.FlightSearch.amadeus.model.FlightOffer;
 import inc.encora.FlightSearch.amadeus.model.Location;
 import inc.encora.FlightSearch.amadeus.service.FlightSearchService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -44,6 +46,7 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .block();
     }
 
+    @Cacheable(value = CacheConfiguration.ADDRESS_CACHE, key = "#iataCode")
     @Override
     public Address searchCityByIATACode(String iataCode) {
         AmadeusSearchLocationsRequestDTO requestDTO = AmadeusSearchLocationsRequestDTO.builder()
@@ -58,6 +61,7 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .block();
     }
 
+    @Cacheable(value = CacheConfiguration.AIRLINE_CACHE, key = "#airlineCode")
     @Override
     public AirlineInformation searchAirlineInformation(String airlineCode) {
         AmadeusAirlinesLookupRequestDTO requestDTO = new AmadeusAirlinesLookupRequestDTO(airlineCode);
