@@ -143,11 +143,9 @@ function LocationResultsCommand({
     <Command shouldFilter={false}>
       <CommandInput
         placeholder="Type to search airports..."
-        className="h-9"
         onValueChange={debouncedOnSearch}
       />
       <CommandList>
-        <CommandEmpty>Type to search an airport</CommandEmpty>
         <CommandGroup>
           {isLoading ? (
             <div className="flex items-center justify-center py-6">
@@ -166,8 +164,8 @@ function LocationResultsCommand({
                   setOpen(false);
                 }}
               >
-                <span className="capitalize">{location.name}</span> (
-                {location.iataCode})
+                {location.airportName} ({location.iataCode}) -{" "}
+                {location.cityName}
                 <Check
                   className={cn(
                     "ml-auto",
