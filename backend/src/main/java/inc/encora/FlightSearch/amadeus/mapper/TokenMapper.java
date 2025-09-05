@@ -11,10 +11,6 @@ import java.time.temporal.ChronoUnit;
 
 @Mapper(componentModel = "spring")
 public interface TokenMapper {
-    @Mapping(target = "value", source = "accessToken")
-    @Mapping(target = "expiresAt", source = "expiresIn", qualifiedByName = "toInstant")
-    Token toToken(AmadeusTokenResponseDTO amadeusTokenResponseDTO);
-
     @Named("toInstant")
     static Instant toInstant(Long value) {
         if (value == null) {
@@ -22,4 +18,8 @@ public interface TokenMapper {
         }
         return Instant.now().plus(value, ChronoUnit.SECONDS);
     }
+
+    @Mapping(target = "value", source = "accessToken")
+    @Mapping(target = "expiresAt", source = "expiresIn", qualifiedByName = "toInstant")
+    Token toToken(AmadeusTokenResponseDTO amadeusTokenResponseDTO);
 }

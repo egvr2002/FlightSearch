@@ -7,8 +7,8 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SegmentMapper {
-  @Mapping(target = "segmentId", source = "id")
-  @Mapping(target = "operatingCarrierCode", source = "operating.carrierCode")
-  @Mapping(target = "aircraftCode", source = "aircraft.code")
-  Segment toSegment(AmadeusSegmentDTO amadeusSegmentDTO);
+    @Mapping(target = "segmentId", source = "id")
+    @Mapping(target = "operatingCarrierCode", source = "operating.carrierCode")
+    @Mapping(target = "aircraftCode", source = "aircraft.code")
+    Segment toSegment(AmadeusSegmentDTO amadeusSegmentDTO);
 }

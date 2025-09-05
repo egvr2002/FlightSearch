@@ -5,9 +5,9 @@ import inc.encora.FlightSearch.amadeus.model.TravelerPricing;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = { FareDetailsBySegmentMapper.class })
+@Mapper(componentModel = "spring", uses = {FareDetailsBySegmentMapper.class})
 public interface TravelerPricingMapper {
-  @Mapping(target = "basePrice", source = "price.base")
-  @Mapping(target = "totalPrice", source = "price.total")
-  TravelerPricing toTravelerPricing(AmadeusTravelerPricingsDTO travelerPricingsDTO);
+    @Mapping(target = "basePrice", source = "price.base")
+    @Mapping(target = "totalPrice", source = "price.total")
+    TravelerPricing toTravelerPricing(AmadeusTravelerPricingsDTO travelerPricingsDTO);
 }
