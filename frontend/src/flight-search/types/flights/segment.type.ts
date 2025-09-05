@@ -10,4 +10,5 @@ export type Segment = {
   stops?: FlightStop[];
   number: string;
   aircraftCode: string;
+  numberOfStops: number;
 };

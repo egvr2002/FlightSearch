@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class Itinerary {
+    private String itineraryId;
     private String duration;
     private List<Segment> segments;
     private LocalDateTime initialDepartureDate;

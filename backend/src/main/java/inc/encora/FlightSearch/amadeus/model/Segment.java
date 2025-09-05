@@ -16,4 +16,5 @@ public class Segment {
     private List<FlightStop> stops;
     private String number;
     private String aircraftCode;
+    private int numberOfStops;
 }

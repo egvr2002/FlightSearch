@@ -7,6 +7,7 @@ import {FlightResultsPage} from "./flight-search/pages/FlightsResultsPage";
 import {FlightSearchPage} from "./flight-search/pages/FlightSearchPage";
 
 import {searchFlightsAction} from "./flight-search/actions/search-flights.action";
+import {getFlightOffersLoader} from "./flight-search/loaders/get-flight-offers.loader";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
           {
             index: true,
             Component: FlightResultsPage,
+            loader: getFlightOffersLoader,
           },
           {
             path: "details",
