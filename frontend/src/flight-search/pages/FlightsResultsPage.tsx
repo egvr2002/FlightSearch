@@ -5,9 +5,19 @@ import {GoBackToSearchButton} from "../components/GoBackToSearchButton";
 import {FlightOfferCard} from "../components/FlightOfferCard";
 
 import type {getFlightOffersLoader} from "../loaders/get-flight-offers.loader";
+import {useFlightOffersContext} from "../hooks/useFlightOffersContext";
+import {useEffect} from "react";
 
 export function FlightResultsPage() {
   const {data} = useLoaderData<typeof getFlightOffersLoader>();
+  const {setFlightOffers} = useFlightOffersContext();
+
+  useEffect(() => {
+    console.log("Effect");
+    if (data) {
+      setFlightOffers(data);
+    }
+  }, [data, setFlightOffers]);
 
   return (
     <div className="space-y-4">
