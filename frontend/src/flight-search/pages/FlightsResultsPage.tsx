@@ -1,12 +1,12 @@
 import {Suspense} from "react";
 import {useLoaderData} from "react-router";
 
-import {ResultsSortOptions} from "../components/ResultsSortOptions";
-import {GoBackToSearchButton} from "../components/GoBackToSearchButton";
+import {FlightOffers} from "../components/results/FlightOffers";
+import {GoBackToSearchButton} from "../components/results/GoBackToSearchButton";
+import {ResultsSortOptions} from "../components/results/ResultsSortOptions";
+import {FlightOffersSkeleton} from "../components/results/skeletons/FlightOffersSkeleton";
 
 import type {getFlightOffersLoader} from "../loaders/get-flight-offers.loader";
-import {FlightOffersSkeleton} from "../components/skeletons/FlightOffersSkeleton";
-import {FlightOffers} from "../components/FlightOffers";
 
 export function FlightResultsPage() {
   const {data} = useLoaderData<typeof getFlightOffersLoader>();

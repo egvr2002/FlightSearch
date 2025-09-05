@@ -3,9 +3,9 @@ import {Separator} from "@/components/ui/separator";
 import {ItineraryHeader} from "./ItineraryHeader";
 import {ItineraryDuration} from "./ItineraryDuration";
 import {SegmentAirlineInfo} from "./SegmentAirlineInfo";
-import {useItineraryData} from "../hooks/useItineraryData";
+import {useItineraryData} from "../../hooks/useItineraryData";
 
-import type {Itinerary} from "../types/flights/itinerary.type";
+import type {Itinerary} from "../../types/flights/itinerary.type";
 
 interface Props {
   itinerary: Itinerary;

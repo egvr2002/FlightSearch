@@ -1,7 +1,7 @@
 import {ItineraryOverview} from "./ItineraryOverview";
 import {SegmentDetails} from "./SegmentDetails";
-import type {Itinerary} from "../types/flights/itinerary.type";
-import type {FlightOffer} from "../types/flights/flight-offer.type";
+import type {Itinerary} from "../../types/flights/itinerary.type";
+import type {FlightOffer} from "../../types/flights/flight-offer.type";
 
 interface Props {
   itinerary: Itinerary;

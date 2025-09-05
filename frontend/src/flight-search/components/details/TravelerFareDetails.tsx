@@ -5,7 +5,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {CheckCircle, XCircle} from "lucide-react";
-import type {TravelerPricing} from "../types/flights/traveler-pricing.type";
+
+import type {TravelerPricing} from "@/flight-search/types/flights/traveler-pricing.type";
 
 interface Props {
   travelersPricings: TravelerPricing[];

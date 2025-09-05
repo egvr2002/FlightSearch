@@ -2,7 +2,7 @@ import {Badge} from "@/components/ui/badge";
 import {Clock} from "lucide-react";
 import {Address} from "./Address";
 import {formatDuration} from "@/lib/utils";
-import type {FlightStop} from "../types/flights/flight-stop.type";
+import type {FlightStop} from "../../types/flights/flight-stop.type";
 
 interface Props {
   totalDuration: string;

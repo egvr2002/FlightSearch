@@ -1,8 +1,8 @@
 import {Card, CardContent} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
-import {PricingDisplay} from "./PricingDisplay";
+import {PricingDisplay} from "../common/PricingDisplay";
 import {formatCurrency} from "@/lib/utils";
-import type {FlightOffer} from "../types/flights/flight-offer.type";
+import type {FlightOffer} from "../../types/flights/flight-offer.type";
 
 interface Props {
   flightOffer: FlightOffer;

@@ -1,4 +1,4 @@
-import {SearchFlightsForm} from "@/flight-search/components/SearchFlightsForm";
+import {SearchFlightsForm} from "../components/search/SearchFlightsForm";
 
 export function FlightSearchPage() {
   return (

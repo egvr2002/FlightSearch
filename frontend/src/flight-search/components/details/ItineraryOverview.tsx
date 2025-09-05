@@ -1,8 +1,8 @@
 import {Card, CardContent} from "@/components/ui/card";
-import {ItineraryHeader} from "./ItineraryHeader";
-import {ItineraryDuration} from "./ItineraryDuration";
-import {useItineraryData} from "../hooks/useItineraryData";
-import type {Itinerary} from "../types/flights/itinerary.type";
+import {ItineraryHeader} from "../common/ItineraryHeader";
+import {ItineraryDuration} from "../common/ItineraryDuration";
+import {useItineraryData} from "../../hooks/useItineraryData";
+import type {Itinerary} from "../../types/flights/itinerary.type";
 
 interface Props {
   itinerary: Itinerary;

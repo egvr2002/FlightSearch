@@ -1,6 +1,7 @@
 import {Suspense, use} from "react";
-import {getAirlineInformation} from "../services/flight-search.service";
-import type {Airline} from "../types/common/airline-information.type";
+
+import {getAirlineInformation} from "@/flight-search/services/flight-search.service";
+import type {Airline} from "@/flight-search/types/common/airline-information.type";
 
 interface CityNameProps {
   iataCode: string;

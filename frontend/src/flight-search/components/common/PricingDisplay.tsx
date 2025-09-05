@@ -1,5 +1,5 @@
 import {formatCurrency} from "@/lib/utils";
-import type {Currency} from "../types/common/currency.type";
+import type {Currency} from "@/flight-search/types/common/currency.type";
 
 interface Props {
   grandTotalPrice: string;

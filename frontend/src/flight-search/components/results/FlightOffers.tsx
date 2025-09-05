@@ -1,7 +1,7 @@
 import {use, useEffect} from "react";
-import type {FlightOffer} from "../types/flights/flight-offer.type";
+import type {FlightOffer} from "../../types/flights/flight-offer.type";
 import {FlightOfferCard} from "./FlightOfferCard";
-import {useFlightOffersContext} from "../hooks/useFlightOffersContext";
+import {useFlightOffersContext} from "../../hooks/useFlightOffersContext";
 
 interface Props {
   flightOffersPromise: Promise<FlightOffer[]>;

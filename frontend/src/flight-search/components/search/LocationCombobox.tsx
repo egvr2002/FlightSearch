@@ -17,7 +17,7 @@ import {cn} from "@/lib/utils";
 import {useIsMobile} from "@/hooks/useMobile";
 import {useLocationCombobox} from "@/flight-search/hooks/useLocationCombobox";
 
-import type {Location} from "../types/locations/location.type";
+import type {Location} from "@/flight-search/types/locations/location.type";
 
 export function LocationCombobox({...props}: React.ComponentProps<"input">) {
   const {

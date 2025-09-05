@@ -1,10 +1,10 @@
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardFooter} from "@/components/ui/card";
-import {FlightItinerary} from "./FlightItinerary";
-import {PricingDisplay} from "./PricingDisplay";
+import {FlightItinerary} from "../common/FlightItinerary";
+import {PricingDisplay} from "../common/PricingDisplay";
 
 import {ChevronRight} from "lucide-react";
-import type {FlightOffer} from "../types/flights/flight-offer.type";
+import type {FlightOffer} from "../../types/flights/flight-offer.type";
 import {Link} from "react-router";
 
 interface Props {

@@ -1,8 +1,9 @@
-import {GoBackToResultsButton} from "../components/GoBackToResultsButton";
-import {FlightItinerarySection} from "../components/FlightItinerarySection";
-import {PricingBreakdown} from "../components/PricingBreakdown";
-import {useFlightOfferDetails} from "../hooks/useFlightOfferDetails";
 import {Navigate} from "react-router";
+
+import {FlightItinerarySection} from "../components/details/FlightItinerarySection";
+import {GoBackToResultsButton} from "../components/details/GoBackToResultsButton";
+import {PricingBreakdown} from "../components/details/PricingBreakdown";
+import {useFlightOfferDetails} from "../hooks/useFlightOfferDetails";
 
 export function FlightDetailsPage() {
   const {flightOffer, isFound} = useFlightOfferDetails();

@@ -1,10 +1,10 @@
 import {Card, CardContent} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
-import {FlightEndpoint} from "./FlightEndpoint";
-import {SegmentAirlineInfo} from "./SegmentAirlineInfo";
+import {FlightEndpoint} from "../common/FlightEndpoint";
+import {SegmentAirlineInfo} from "../common/SegmentAirlineInfo";
 import {TravelerFareDetails} from "./TravelerFareDetails";
-import type {Segment} from "../types/flights/segment.type";
-import type {FlightOffer} from "../types/flights/flight-offer.type";
+import type {Segment} from "../../types/flights/segment.type";
+import type {FlightOffer} from "../../types/flights/flight-offer.type";
 
 interface Props {
   segment: Segment;
