@@ -1,21 +1,23 @@
+import type {DebouncedState} from "use-debounce";
+
 import {Button} from "@/components/ui/button";
 import {Check, ChevronsUpDown, Loader2} from "lucide-react";
-import {cn} from "@/lib/utils";
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import {Drawer, DrawerContent, DrawerTrigger} from "@/components/ui/drawer";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {searchLocations} from "@/flight-search/services/flight-search.service";
-import {useLocationCombobox} from "@/flight-search/hooks/useLocationCombobox";
+
+import {cn} from "@/lib/utils";
 import {useIsMobile} from "@/hooks/useMobile";
-import type {DebouncedState} from "use-debounce";
+import {useLocationCombobox} from "@/flight-search/hooks/useLocationCombobox";
+
 import type {Location} from "../types/locations/location.type";
-import {Drawer, DrawerContent, DrawerTrigger} from "@/components/ui/drawer";
 
 export function LocationCombobox({...props}: React.ComponentProps<"input">) {
   const {

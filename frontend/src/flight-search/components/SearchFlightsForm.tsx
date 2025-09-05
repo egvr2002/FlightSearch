@@ -11,9 +11,10 @@ import {
 } from "../../components/ui/select";
 import {Button} from "../../components/ui/button";
 import {Input} from "../../components/ui/input";
+
+import {FieldError} from "../../components/shared/components/FieldError";
 import {LocationCombobox} from "./LocationCombobox";
 import {searchFlightsAction} from "@/flight-search/actions/search-flights.action";
-import {FieldError} from "../../shared/components/FieldError";
 
 export function SearchFlightsForm() {
   const actionData = useActionData<typeof searchFlightsAction>();

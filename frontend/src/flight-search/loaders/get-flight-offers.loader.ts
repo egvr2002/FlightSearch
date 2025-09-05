@@ -1,8 +1,8 @@
 import * as z from "zod";
 import type {ActionFunctionArgs} from "react-router";
-import {searchFlightsFormSchema} from "../schemas/search-flights-form.schema";
 
 import {getFlightOffers} from "../services/flight-search.service";
+import {searchFlightsFormSchema} from "../schemas/search-flights-form.schema";
 
 export async function getFlightOffersLoader({request}: ActionFunctionArgs) {
   const url = new URL(request.url);
@@ -11,6 +11,7 @@ export async function getFlightOffersLoader({request}: ActionFunctionArgs) {
     searchFlightsFormSchema.safeParse(searchParams);
 
   if (!success) {
+    console.log(z.treeifyError(error).properties);
     return {
       ok: false,
       error: z.treeifyError(error).properties,

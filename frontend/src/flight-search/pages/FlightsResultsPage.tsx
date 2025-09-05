@@ -1,7 +1,9 @@
+import {useLoaderData} from "react-router";
+
 import {ResultsSortOptions} from "../components/ResultsSortOptions";
 import {GoBackToSearchButton} from "../components/GoBackToSearchButton";
 import {FlightOfferCard} from "../components/FlightOfferCard";
-import {useLoaderData} from "react-router";
+
 import type {getFlightOffersLoader} from "../loaders/get-flight-offers.loader";
 
 export function FlightResultsPage() {

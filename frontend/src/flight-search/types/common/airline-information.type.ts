@@ -1,4 +1,4 @@
-export type AirlineInformation = {
+export type Airline = {
   name: string;
   iataCode: string;
 };

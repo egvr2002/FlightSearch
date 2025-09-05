@@ -1,5 +1,7 @@
 import {flightSearch} from "@/flight-search/api/flight-search.api";
 
+import type {Address} from "../types/common/address.type";
+import type {Airline} from "../types/common/airline-information.type";
 import type {FlightOffer} from "../types/flights/flight-offer.type";
 import type {FlightSearchPayload} from "../types/flights/flight-search-payload.type";
 import type {Location} from "@/flight-search/types/locations/location.type";
@@ -37,4 +39,18 @@ export async function getFlightOffers(
   );
 
   return flightOffers.data;
+}
+
+export async function getAddressInformation(iataCode: string) {
+  const addressInformation = await flightSearch.get<Address>(
+    `/search/locations/city/${iataCode}`,
+  );
+  return addressInformation.data;
+}
+
+export async function getAirlineInformation(iataCode: string) {
+  const airlineInformation = await flightSearch.get<Airline>(
+    `/search/airlines/${iataCode}`,
+  );
+  return airlineInformation.data;
 }

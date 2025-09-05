@@ -1,5 +1,5 @@
-import {AppTitle} from "@/shared/components/AppTitle";
 import {Outlet} from "react-router";
+import {AppTitle} from "@/components/shared/components/AppTitle";
 
 export function MainLayout() {
   return (
