@@ -4,5 +4,5 @@ export type FareDetailsBySegment = {
   segmentId: string;
   cabin: string;
   amenities: Amenity[];
-  bookingClass: string;
+  class: string;
 };

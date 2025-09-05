@@ -2,7 +2,7 @@ import {Separator} from "@/components/ui/separator";
 
 import {ItineraryHeader} from "./ItineraryHeader";
 import {ItineraryDuration} from "./ItineraryDuration";
-import {ItineraryAirline} from "./ItineraryAirline";
+import {SegmentAirlineInfo} from "./SegmentAirlineInfo";
 import {useItineraryData} from "../hooks/useItineraryData";
 
 import type {Itinerary} from "../types/flights/itinerary.type";
@@ -41,9 +41,10 @@ export function FlightItinerary({showSeparator = false, itinerary}: Props) {
           stops={stops}
         />
 
-        <ItineraryAirline
-          primaryCarrierCode={carrierCode}
+        <SegmentAirlineInfo
+          carrierCode={carrierCode}
           operatingCarrierCode={operatingCarrierCode}
+          showFlightDetails={false}
         />
       </div>
       {showSeparator && <Separator className="my-6" />}

@@ -13,7 +13,6 @@ export function FlightResultsPage() {
   const {setFlightOffers} = useFlightOffersContext();
 
   useEffect(() => {
-    console.log("Effect");
     if (data) {
       setFlightOffers(data);
     }

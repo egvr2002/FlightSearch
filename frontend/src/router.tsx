@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         action: searchFlightsAction,
       },
       {
-        path: "/flight-offers",
+        path: "flight-offers",
         children: [
           {
             index: true,
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             loader: getFlightOffersLoader,
           },
           {
-            path: "details",
+            path: ":flightOfferId",
             Component: FlightDetailsPage,
           },
         ],

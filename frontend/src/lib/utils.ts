@@ -1,3 +1,4 @@
+import type {Currency} from "@/flight-search/types/common/currency.type";
 import {clsx, type ClassValue} from "clsx";
 import {twMerge} from "tailwind-merge";
 
@@ -17,7 +18,7 @@ export function generateSearchParamsFromObject(object: object): string {
 
 export function formatCurrency(
   amount: string,
-  currency = "USD",
+  currency: Currency,
   locale = "en-US",
 ): string {
   return new Intl.NumberFormat(locale, {
