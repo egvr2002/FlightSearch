@@ -18,7 +18,7 @@ export async function getFlightOffersLoader({request}: ActionFunctionArgs) {
     };
   }
 
-  const flightOffers = await getFlightOffers(data);
+  const flightOffers = getFlightOffers(data);
 
   return {
     ok: true,

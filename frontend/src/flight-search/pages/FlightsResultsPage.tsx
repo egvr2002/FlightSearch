@@ -1,22 +1,15 @@
+import {Suspense} from "react";
 import {useLoaderData} from "react-router";
 
 import {ResultsSortOptions} from "../components/ResultsSortOptions";
 import {GoBackToSearchButton} from "../components/GoBackToSearchButton";
-import {FlightOfferCard} from "../components/FlightOfferCard";
 
 import type {getFlightOffersLoader} from "../loaders/get-flight-offers.loader";
-import {useFlightOffersContext} from "../hooks/useFlightOffersContext";
-import {useEffect} from "react";
+import {FlightOffersSkeleton} from "../components/skeletons/FlightOffersSkeleton";
+import {FlightOffers} from "../components/FlightOffers";
 
 export function FlightResultsPage() {
   const {data} = useLoaderData<typeof getFlightOffersLoader>();
-  const {setFlightOffers} = useFlightOffersContext();
-
-  useEffect(() => {
-    if (data) {
-      setFlightOffers(data);
-    }
-  }, [data, setFlightOffers]);
 
   return (
     <div className="space-y-4">
@@ -25,12 +18,9 @@ export function FlightResultsPage() {
         <ResultsSortOptions />
       </div>
 
-      {data?.map((flightOffer) => (
-        <FlightOfferCard
-          key={flightOffer.flightOfferId}
-          flightOffer={flightOffer}
-        />
-      ))}
+      <Suspense fallback={<FlightOffersSkeleton />}>
+        <FlightOffers flightOffersPromise={data!} />
+      </Suspense>
     </div>
   );
 }
