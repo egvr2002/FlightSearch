@@ -2,10 +2,11 @@ import {useState} from "react";
 import {useDebouncedCallback} from "use-debounce";
 
 import type {Location} from "@/flight-search/types/locations/location.type";
-import type {SearchLocations} from "@/flight-search/types/locations/search-location.type";
+import type {SearchLocationsPayload} from "../types/locations/search-location.type";
 
 export function useLocationCombobox(
-  onSearchLocations: (req: SearchLocations) => Promise<Location[]>,
+  onSearchLocations: (req: SearchLocationsPayload) => Promise<Location[]>,
+  wait: number = 500,
 ) {
   const [open, setOpen] = useState(false);
   const [locations, setLocations] = useState<Location[]>([]);
@@ -19,7 +20,7 @@ export function useLocationCombobox(
     const locationsResult = await onSearchLocations({keyword});
     setLocations(locationsResult);
     setIsLoading(false);
-  }, 300);
+  }, wait);
 
   return {
     open,

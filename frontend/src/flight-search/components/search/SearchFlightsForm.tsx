@@ -1,19 +1,20 @@
 import {Form, useActionData} from "react-router";
 
-import {Checkbox} from "../../components/ui/checkbox";
-import {Label} from "../../components/ui/label";
+import {Checkbox} from "../../../components/ui/checkbox";
+import {Label} from "../../../components/ui/label";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "../../components/ui/select";
-import {Button} from "../../components/ui/button";
-import {Input} from "../../components/ui/input";
+} from "../../../components/ui/select";
+import {Button} from "../../../components/ui/button";
+import {Input} from "../../../components/ui/input";
+
+import {FieldError} from "../../../components/shared/components/FieldError";
 import {LocationCombobox} from "./LocationCombobox";
 import {searchFlightsAction} from "@/flight-search/actions/search-flights.action";
-import {FieldError} from "../../shared/components/FieldError";
 
 export function SearchFlightsForm() {
   const actionData = useActionData<typeof searchFlightsAction>();

@@ -1,10 +1,8 @@
-import {SearchFlightsForm} from "@/flight-search/components/SearchFlightsForm";
-import {AppTitle} from "@/shared/components/AppTitle";
+import {SearchFlightsForm} from "../components/search/SearchFlightsForm";
 
 export function FlightSearchPage() {
   return (
-    <div className="mx-auto max-w-sm space-y-8">
-      <AppTitle />
+    <div className="mx-auto w-full max-w-md">
       <SearchFlightsForm />
     </div>
   );

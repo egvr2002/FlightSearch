@@ -37,10 +37,18 @@ export const searchFlightsFormSchema = z
     ),
     currencyCode: currencySchema,
     nonStop: z
-      .literal("on")
-      .transform((v) => v === "on")
+      .string()
+      .transform((value) => {
+        const caseLowerValue = value.toLowerCase();
+        return caseLowerValue === "on" || caseLowerValue === "true";
+      })
       .default(false),
-    max: z.number().optional().default(10),
+    max: z
+      .codec(z.string(), z.number(), {
+        encode: (numberValue) => `${numberValue}`,
+        decode: (stringValue) => parseInt(stringValue),
+      })
+      .default(10),
   })
   .refine(
     (data) => {

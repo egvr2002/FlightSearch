@@ -1,4 +1,5 @@
 export type Location = {
-  name: string;
+  airportName: string;
+  cityName: string;
   iataCode: string;
 };

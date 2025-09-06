@@ -7,6 +7,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface AmenityMapper {
-  @Mapping(target = "name", source = "description")
-  Amenity toAmenity(AmadeusAmenityDTO amenityDTO);
+    @Mapping(target = "name", source = "description")
+    Amenity toAmenity(AmadeusAmenityDTO amenityDTO);
 }
