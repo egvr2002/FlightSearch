@@ -27,9 +27,9 @@ export function TravelerFareDetails({segmentId, travelersPricings}: Props) {
         type="multiple"
         className="w-full"
       >
-        {travelersWithFares.map(({fareDetails, travelerId}) => (
+        {travelersWithFares.map(({fareDetails, travelerId}, index) => (
           <AccordionItem
-            key={fareDetails?.segmentId}
+            key={`${fareDetails?.segmentId}-${index}`}
             value={`traveler-${travelerId}`}
           >
             <AccordionTrigger>Traveler {travelerId}</AccordionTrigger>
@@ -51,9 +51,9 @@ export function TravelerFareDetails({segmentId, travelersPricings}: Props) {
                     Amenities
                   </div>
                   <div className="grid grid-cols-1 gap-2 text-sm">
-                    {fareDetails!.amenities.map((amenity) => (
+                    {fareDetails!.amenities.map((amenity, index) => (
                       <div
-                        key={amenity.name}
+                        key={`${amenity.name}-${index}`}
                         className="flex items-center gap-2"
                       >
                         {amenity.isChargeable ? (
