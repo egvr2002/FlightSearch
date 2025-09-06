@@ -6,6 +6,7 @@ import type {SearchLocationsPayload} from "../types/locations/search-location.ty
 
 export function useLocationCombobox(
   onSearchLocations: (req: SearchLocationsPayload) => Promise<Location[]>,
+  wait: number = 500,
 ) {
   const [open, setOpen] = useState(false);
   const [locations, setLocations] = useState<Location[]>([]);
@@ -19,7 +20,7 @@ export function useLocationCombobox(
     const locationsResult = await onSearchLocations({keyword});
     setLocations(locationsResult);
     setIsLoading(false);
-  }, 300);
+  }, wait);
 
   return {
     open,

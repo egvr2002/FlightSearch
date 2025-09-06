@@ -28,7 +28,7 @@ export function LocationCombobox({...props}: React.ComponentProps<"input">) {
     setOpen,
     setValue,
     value,
-  } = useLocationCombobox(searchLocations);
+  } = useLocationCombobox(searchLocations, 500);
   const isMobile = useIsMobile();
 
   if (isMobile) {
