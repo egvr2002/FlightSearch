@@ -5,6 +5,9 @@ import {SegmentAirlineInfo} from "../common/SegmentAirlineInfo";
 import {TravelerFareDetails} from "./TravelerFareDetails";
 import type {Segment} from "../../types/flights/segment.type";
 import type {FlightOffer} from "../../types/flights/flight-offer.type";
+import {Badge} from "@/components/ui/badge";
+import {formatDuration} from "@/lib/utils";
+import {Clock} from "lucide-react";
 
 interface Props {
   segment: Segment;
@@ -49,9 +52,18 @@ export function SegmentDetails({
         {!isLastSegment && (
           <>
             <Separator className="my-4" />
-            <div className="text-muted-foreground text-center text-sm">
-              {/* TODO: Calculate layover time between segments */}
-              Layover calculation needed
+            <div className="flex items-center justify-center gap-2 py-2">
+              <div className="flex items-center gap-2">
+                <Badge
+                  variant="outline"
+                  className="border-orange-200 bg-orange-50 text-orange-700"
+                >
+                  <Clock />
+                  <span>
+                    Layover: {formatDuration(segment.layoverDuration)}
+                  </span>
+                </Badge>
+              </div>
             </div>
           </>
         )}

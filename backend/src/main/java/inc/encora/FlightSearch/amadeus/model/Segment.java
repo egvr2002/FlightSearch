@@ -17,4 +17,5 @@ public class Segment {
     private String number;
     private String aircraftCode;
     private int numberOfStops;
+    private String layoverDuration;
 }

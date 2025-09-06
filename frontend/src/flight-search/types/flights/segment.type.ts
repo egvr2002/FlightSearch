@@ -11,4 +11,5 @@ export type Segment = {
   number: string;
   aircraftCode: string;
   numberOfStops: number;
+  layoverDuration: string;
 };

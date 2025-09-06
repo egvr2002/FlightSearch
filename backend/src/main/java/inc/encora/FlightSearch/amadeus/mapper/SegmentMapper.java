@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SegmentMapper {
+    @Mapping(target = "layoverDuration", ignore = true)
     @Mapping(target = "segmentId", source = "id")
     @Mapping(target = "operatingCarrierCode", source = "operating.carrierCode")
     @Mapping(target = "aircraftCode", source = "aircraft.code")
