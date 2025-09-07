@@ -13,6 +13,8 @@ services:
     container_name: flight-search-fe-app
     build: ./frontend
     restart: on-failure:5
+    env_file:
+      - ./frontend/.env
     depends_on:
       - flight-search-be
     ports:
