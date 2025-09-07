@@ -12,7 +12,7 @@ import {
 import {Button} from "../../../components/ui/button";
 import {Input} from "../../../components/ui/input";
 
-import {FieldError} from "../../../components/shared/components/FieldError";
+import {FieldError} from "../../../components/shared/FieldError";
 import {LocationCombobox} from "./LocationCombobox";
 import {searchFlightsAction} from "@/flight-search/actions/search-flights.action";
 
