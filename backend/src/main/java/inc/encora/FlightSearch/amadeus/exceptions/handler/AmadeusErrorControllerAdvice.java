@@ -2,14 +2,19 @@ package inc.encora.FlightSearch.amadeus.exceptions.handler;
 
 import inc.encora.FlightSearch.amadeus.dto.response.APIResponseErrorDTO;
 import inc.encora.FlightSearch.amadeus.exceptions.api.AmadeusAPIException;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Slf4j
 @ControllerAdvice
@@ -68,5 +73,42 @@ public class AmadeusErrorControllerAdvice {
         errorDTO.setMessage(e.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDTO);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<APIResponseErrorDTO> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        String errorMessage = "Validation Error";
+        Optional<FieldError> firstError = ex.getBindingResult().getFieldErrors().stream().findFirst();
+
+        if (firstError.isPresent()) {
+            FieldError fieldError = firstError.get();
+            errorMessage = fieldError.getField() + ": " + fieldError.getDefaultMessage();
+        }
+
+        log.error("Validation Error: {}", errorMessage, ex);
+
+        APIResponseErrorDTO errorDTO = new APIResponseErrorDTO();
+        errorDTO.setStatus(HttpStatus.BAD_REQUEST.toString());
+        errorDTO.setMessage(errorMessage);
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<APIResponseErrorDTO> handleConstraintViolationException(ConstraintViolationException ex) {
+        String errorMessage = "Constraint Violation";
+        Optional<ConstraintViolation<?>> firstViolation = ex.getConstraintViolations().stream().findFirst();
+
+        if (firstViolation.isPresent()) {
+            ConstraintViolation<?> violation = firstViolation.get();
+            errorMessage = violation.getMessage();
+        }
+        log.error("Constraint Violation: {}", errorMessage, ex);
+
+        APIResponseErrorDTO errorDTO = new APIResponseErrorDTO();
+        errorDTO.setStatus(HttpStatus.BAD_REQUEST.toString());
+        errorDTO.setMessage(errorMessage);
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDTO);
     }
 }
