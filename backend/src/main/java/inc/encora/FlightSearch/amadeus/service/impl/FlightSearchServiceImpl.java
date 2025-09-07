@@ -6,6 +6,7 @@ import inc.encora.FlightSearch.amadeus.config.CacheConfiguration;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.*;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
+import inc.encora.FlightSearch.amadeus.exceptions.api.AmadeusAPIException;
 import inc.encora.FlightSearch.amadeus.mapper.AirlineMapper;
 import inc.encora.FlightSearch.amadeus.mapper.FlightOfferMapper;
 import inc.encora.FlightSearch.amadeus.mapper.LocationMapper;
@@ -18,8 +19,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +58,12 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .build();
         return amadeusLocationsClient.searchLocations(requestDTO)
                 .map(AmadeusListResponseDTO::getData)
+                .flatMap(data -> {
+                    if (data == null || data.isEmpty()) {
+                        return Mono.error(new NoSuchElementException("No location found for IATA code: " + iataCode));
+                    }
+                    return Mono.just(data);
+                })
                 .map(List::getFirst)
                 .map(AmadeusLocationDTO::getAddress)
                 .map(locationMapper::toAddress)
@@ -67,6 +76,12 @@ public class FlightSearchServiceImpl implements FlightSearchService {
         AmadeusAirlinesLookupRequestDTO requestDTO = new AmadeusAirlinesLookupRequestDTO(airlineCode);
         return amadeusLocationsClient.searchAirlineInformation(requestDTO)
                 .map(AmadeusListResponseDTO::getData)
+                .flatMap(data -> {
+                    if (data == null || data.isEmpty()) {
+                        return Mono.error(new NoSuchElementException("No location found for IATA code: " + airlineCode));
+                    }
+                    return Mono.just(data);
+                })
                 .map(List::getFirst)
                 .map(airlineMapper::toAirlineInformation)
                 .block();
