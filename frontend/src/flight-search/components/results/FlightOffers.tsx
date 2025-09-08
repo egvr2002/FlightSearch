@@ -9,13 +9,13 @@ interface Props {
 
 export function FlightOffers({flightOffersPromise}: Props) {
   const flightOffers = use(flightOffersPromise);
-  const {setFlightOffers} = useFlightOffersContext();
+  const {setFlightOffers, sortedFlightOffers} = useFlightOffersContext();
 
   useEffect(() => {
     setFlightOffers(flightOffers);
   }, [flightOffers, setFlightOffers]);
 
-  return flightOffers.map((flightOffer) => (
+  return sortedFlightOffers.map((flightOffer) => (
     <FlightOfferCard
       key={flightOffer.flightOfferId}
       flightOffer={flightOffer}

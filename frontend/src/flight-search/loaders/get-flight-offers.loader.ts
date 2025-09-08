@@ -18,10 +18,10 @@ export async function getFlightOffersLoader({request}: ActionFunctionArgs) {
     };
   }
 
-  const flightOffers = getFlightOffers(data);
+  const flightOffersPromise = getFlightOffers(data);
 
   return {
     ok: true,
-    data: flightOffers,
+    data: flightOffersPromise,
   };
 }
