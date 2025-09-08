@@ -1,6 +1,6 @@
 import {Card, CardContent} from "@/components/ui/card";
-import {ItineraryHeader} from "../common/ItineraryHeader";
-import {ItineraryDuration} from "../common/ItineraryDuration";
+import {ItineraryHeader} from "../shared/ItineraryHeader";
+import {ItineraryDuration} from "../shared/ItineraryDuration";
 import {useItineraryData} from "../../hooks/useItineraryData";
 import type {Itinerary} from "../../types/flights/itinerary.type";
 

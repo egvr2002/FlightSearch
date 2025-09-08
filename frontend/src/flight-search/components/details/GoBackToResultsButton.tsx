@@ -12,7 +12,7 @@ export function GoBackToResultsButton() {
   return (
     <Button
       variant="ghost"
-      className="w-fit"
+      className="w-fit cursor-pointer"
       onClick={onNavigate}
     >
       <ChevronLeft className="size-6" />

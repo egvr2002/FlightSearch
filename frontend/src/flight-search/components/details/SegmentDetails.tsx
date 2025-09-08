@@ -1,7 +1,7 @@
 import {Card, CardContent} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
-import {FlightEndpoint} from "../common/FlightEndpoint";
-import {SegmentAirlineInfo} from "../common/SegmentAirlineInfo";
+import {FlightEndpoint} from "../shared/FlightEndpoint";
+import {SegmentAirlineInfo} from "../shared/SegmentAirlineInfo";
 import {TravelerFareDetails} from "./TravelerFareDetails";
 import type {Segment} from "../../types/flights/segment.type";
 import type {FlightOffer} from "../../types/flights/flight-offer.type";

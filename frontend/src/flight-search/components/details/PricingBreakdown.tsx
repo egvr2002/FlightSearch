@@ -1,6 +1,6 @@
 import {Card, CardContent} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
-import {PricingDisplay} from "../common/PricingDisplay";
+import {PricingDisplay} from "../shared/PricingDisplay";
 import {formatCurrency} from "@/lib/utils";
 import type {FlightOffer} from "../../types/flights/flight-offer.type";
 
