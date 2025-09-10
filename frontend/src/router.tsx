@@ -1,6 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router";
 
 import {MainLayout} from "./flight-search/layouts/MainLayout";
+import {RouteError} from "./components/shared/RouteError";
 
 import {FlightDetailsPage} from "./flight-search/pages/FlightDetailsPage";
 import {FlightResultsPage} from "./flight-search/pages/FlightsResultsPage";
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "flight-offers",
+        ErrorBoundary: RouteError,
         children: [
           {
             index: true,
