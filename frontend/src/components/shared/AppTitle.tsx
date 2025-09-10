@@ -10,7 +10,10 @@ export function AppTitle() {
           className="flex flex-col items-center gap-2 font-medium"
         >
           <div className="bg-secondary text-accent flex size-16 items-center justify-center rounded-sm">
-            <PlaneTakeoff className="size-12" />
+            <PlaneTakeoff
+              data-testid="plane-takeoff-icon"
+              className="size-12"
+            />
           </div>
           <span className="sr-only">FlightSearch</span>
         </Link>
