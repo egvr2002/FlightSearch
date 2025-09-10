@@ -33,7 +33,7 @@ export function SegmentDetails({
           operatingCarrierCode={segment.operatingCarrierCode}
           flightNumber={segment.number}
           aircraftCode={segment.aircraftCode}
-          showFlightDetails={true}
+          showFlightDetails
         />
 
         <FlightEndpoint
