@@ -28,7 +28,7 @@ export const searchFlightsFormSchema = z
       ])
       .optional(),
     adults: z.codec(
-      z.string().min(1, {error: "Arrival code is required"}),
+      z.string().min(1, {error: "Number of adults is required"}),
       z.number().min(1, {error: "Number of adults must be greater than 0"}),
       {
         encode: (numberValue) => `${numberValue}`,
