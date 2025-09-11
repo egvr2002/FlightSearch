@@ -1,6 +1,6 @@
 # FlightSearch
 
-A full-stack flight search application that integrates with Amadeus API to provide real-time flight offers and airport location search capabilities. The project consists of a Spring Boot backend API and a React TypeScript frontend built with Vite.
+A full-stack flight search application that integrates with Amadeus API to provide flight offers given some search criteria. The project consists of a Spring Boot backend API and a React TypeScript frontend built with Vite.
 
 ## Prerequisites
 
