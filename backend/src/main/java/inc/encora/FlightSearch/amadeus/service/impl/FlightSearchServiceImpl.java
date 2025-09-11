@@ -6,7 +6,6 @@ import inc.encora.FlightSearch.amadeus.config.CacheConfiguration;
 import inc.encora.FlightSearch.amadeus.dto.common.AmadeusLocationDTO;
 import inc.encora.FlightSearch.amadeus.dto.request.*;
 import inc.encora.FlightSearch.amadeus.dto.response.AmadeusListResponseDTO;
-import inc.encora.FlightSearch.amadeus.exceptions.api.AmadeusAPIException;
 import inc.encora.FlightSearch.amadeus.mapper.AirlineMapper;
 import inc.encora.FlightSearch.amadeus.mapper.FlightOfferMapper;
 import inc.encora.FlightSearch.amadeus.mapper.LocationMapper;
@@ -78,7 +77,8 @@ public class FlightSearchServiceImpl implements FlightSearchService {
                 .map(AmadeusListResponseDTO::getData)
                 .flatMap(data -> {
                     if (data == null || data.isEmpty()) {
-                        return Mono.error(new NoSuchElementException("No location found for IATA code: " + airlineCode));
+                        return Mono
+                                .error(new NoSuchElementException("No location found for IATA code: " + airlineCode));
                     }
                     return Mono.just(data);
                 })

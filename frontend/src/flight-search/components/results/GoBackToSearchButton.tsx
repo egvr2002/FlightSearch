@@ -10,10 +10,7 @@ export function GoBackToSearchButton() {
       asChild
       className="w-fit"
     >
-      <Link
-        to="/"
-        replace
-      >
+      <Link to="/">
         <ChevronLeft className="size-6" />
         Return to Search
       </Link>

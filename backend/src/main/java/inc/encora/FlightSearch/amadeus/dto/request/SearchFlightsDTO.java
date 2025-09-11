@@ -1,7 +1,6 @@
 package inc.encora.FlightSearch.amadeus.dto.request;
 
 import jakarta.validation.constraints.*;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -28,7 +27,7 @@ public class SearchFlightsDTO {
     private int adults;
 
     @Pattern(regexp = "^[A-Z]{3}$", message = "Currency code must be a valid ISO 4217 code")
-    @Pattern(regexp = "^(USD|EUR|GBP)$", message = "Currency code must be one of USD, EUR, or GBP")
+    @Pattern(regexp = "^(USD|EUR|MXN)$", message = "Currency code must be one of USD, EUR, or MXN")
     private String currencyCode;
 
     private boolean nonStop;

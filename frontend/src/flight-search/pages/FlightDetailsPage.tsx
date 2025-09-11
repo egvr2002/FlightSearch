@@ -24,7 +24,7 @@ export function FlightDetailsPage() {
       </div>
 
       <div className="grid grid-cols-12 gap-x-4 gap-y-6">
-        <div className="col-span-8 space-y-6">
+        <div className="col-span-12 space-y-6 md:col-span-8">
           {flightOffer.itineraries.map((itinerary) => (
             <FlightItinerarySection
               key={itinerary.itineraryId}
@@ -34,7 +34,7 @@ export function FlightDetailsPage() {
           ))}
         </div>
 
-        <div className="col-span-4">
+        <div className="col-span-12 md:col-span-4">
           <PricingBreakdown flightOffer={flightOffer} />
         </div>
       </div>

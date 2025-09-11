@@ -9,7 +9,6 @@ import lombok.Data;
 public class SearchLocationsDTO {
     @NotNull(message = "Keyword is required")
     @NotBlank(message = "Keyword cannot be blank")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Invalid query parameter format")
     private String keyword;
 
     private String subType;
